@@ -20,7 +20,7 @@ jobs:
       id: vars
       run: echo ::set-output name=tag::$(echo ${GITHUB_SHA:10})
     - name: Build the Docker image
-      run: docker build . --file docker/php/Dockerfile --tag php:${{steps.vars.outputs.tag}}
+      run: docker build . --file docker/php/Dockerfile --tag ammardev0/php:${{steps.vars.outputs.tag}}
     - name: Push the tagged Docker image
       run: docker push ammardev0/php:${{steps.vars.outputs.tag}}
     - name: Build the latest Docker image
