@@ -10,7 +10,7 @@ services:
       - ./docker/nginx/:/etc/nginx/conf.d/
 
   php:
-    build: ./docker/php/
+    image: ammardev0/php:latest
     volumes:
       - ./:/var/www
     ports:
