@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx:alpine
+    ports:
+      - 80:80
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx/:/etc/nginx/conf.d/
+
+  php:
+    build: ./docker/php/
+    volumes:
+      - ./:/var/www
+    ports:
+        - 6001:6001
+    working_dir: /var/www
+
+  database:
+    image: mariadb:10
+    ports:
+      - 3306:3306
+    volumes:
+      - dbdata:/var/lib/mysql
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_DATABASE: project
+
+volumes:
+  dbdata:
