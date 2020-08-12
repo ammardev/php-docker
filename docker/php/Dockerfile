@@ -3,7 +3,8 @@ FROM php:7-fpm-alpine
 RUN apk update 
 
 # Install dependincies ################################################################################################
-RUN apk add shadow git curl libpng-dev zip unzip libzip-dev $PHPIZE_DEPS
+RUN apk add shadow git curl libpng-dev zip unzip libzip-dev libpng libpng-dev libjpeg-turbo-dev libwebp-dev\
+    zlib-dev libxpm-dev $PHPIZE_DEPS
 
 RUN docker-php-ext-install pdo pdo_mysql gd zip
 
