@@ -7,7 +7,7 @@ RUN apk add shadow git curl libpng-dev zip unzip libzip-dev libpng libpng-dev jp
     libjpeg zlib-dev libxpm-dev freetype-dev $PHPIZE_DEPS
 
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
-&& docker-php-ext-install pdo pdo_mysql gd zip
+&& docker-php-ext-install pdo pdo_mysql gd zip exif
 
 RUN pecl install xdebug
 
