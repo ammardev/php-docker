@@ -9,9 +9,9 @@ RUN apk add shadow git curl libpng-dev zip unzip libzip-dev libpng libpng-dev jp
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
 && docker-php-ext-install pdo pdo_mysql gd zip exif
 
-RUN pecl install xdebug
+RUN pecl install xdebug memcached
 
-RUN docker-php-ext-enable xdebug
+RUN docker-php-ext-enable xdebug memcached
 
 RUN curl -s http://getcomposer.org/installer | php && \
   echo "export PATH=${PATH}:/var/www/vendor/bin" >> ~/.bashrc && \
