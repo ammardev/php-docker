@@ -7,7 +7,7 @@ RUN apk add shadow git curl libpng-dev zip unzip libzip-dev libpng libpng-dev jp
     libjpeg zlib-dev libxpm-dev freetype-dev libmemcached-dev php7-pcntl $PHPIZE_DEPS
 
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
-&& docker-php-ext-install pdo pdo_mysql gd zip exif opcache calendar
+&& docker-php-ext-install pdo pdo_mysql gd zip exif opcache calendar pcntl
 
 RUN pecl install xdebug memcached redis
 
