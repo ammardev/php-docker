@@ -17,6 +17,39 @@ services:
         - 6001:6001
     working_dir: /var/www
 
+#  memcached:
+#    image: memcached
+#    ports:
+#      - 11211:11211
+
+#  redis:
+#    image: redis
+#    ports:
+#      - 6379:6379
+
+#  elasticsearch:
+#    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.0
+#    volumes:
+#      - elasticsearch:/usr/share/elasticsearch/data
+#    environment:
+#      - cluster.name=laradock-cluster
+#      - node.name=laradock-node
+#      - bootstrap.memory_lock=true
+#      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+#      - cluster.initial_master_nodes=laradock-node
+#    ulimits:
+#      memlock:
+#        soft: -1
+#        hard: -1
+#      nofile:
+#        soft: 65536
+#        hard: 65536
+#    ports:
+#      - "9200:9200"
+#      - "9300:9300"
+#    depends_on:
+#      - php
+
   database:
     image: mariadb:10
     ports:
@@ -29,3 +62,4 @@ services:
 
 volumes:
   dbdata:
+#  elasticsearch:
