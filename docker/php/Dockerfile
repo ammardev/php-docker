@@ -1,10 +1,10 @@
 FROM php:7-fpm-alpine
 
-RUN apk update 
+RUN apk update
 
 # Install dependincies ################################################################################################
 RUN apk add shadow git curl libpng-dev zip unzip libzip-dev libpng libpng-dev jpeg-dev libjpeg-turbo-dev libwebp-dev\
-    libjpeg zlib-dev libxpm-dev freetype-dev libmemcached-dev $PHPIZE_DEPS
+    libjpeg zlib-dev libxpm-dev freetype-dev libmemcached-dev php7-pcntl $PHPIZE_DEPS
 
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
 && docker-php-ext-install pdo pdo_mysql gd zip exif opcache calendar
