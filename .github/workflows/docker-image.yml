@@ -19,8 +19,10 @@ jobs:
     - name: Get the version
       id: vars
       run: echo ::set-output name=tag::$(echo ${GITHUB_SHA:10})
-    - name: Build the Docker image
+    - name: Build main Docker image
       run: docker build . --file docker/php/Dockerfile --tag ammardev0/php:${{steps.vars.outputs.tag}}
+    - name: Build php 7.3
+      run: docker build . --file docker/php/Dockerfile73 --tag ammardev0/php:7.3
     - name: Push the tagged Docker image
       run: docker push ammardev0/php:${{steps.vars.outputs.tag}}
     - name: Build the latest Docker image
