@@ -1,0 +1,37 @@
+FROM php:7.1-fpm-alpine
+
+RUN apk update
+
+# Install dependincies ################################################################################################
+RUN apk add shadow git curl libpng-dev zip unzip libzip-dev libpng libpng-dev jpeg-dev libjpeg-turbo-dev libwebp-dev\
+    libjpeg zlib-dev libxpm-dev freetype-dev libmemcached-dev php7-pcntl openssh-client php7-bcmath php7-sockets $PHPIZE_DEPS
+
+RUN docker-php-ext-install pdo pdo_mysql gd zip exif opcache calendar pcntl bcmath sockets
+
+RUN pecl install memcached redis mongodb
+
+RUN docker-php-ext-enable memcached redis mongodb
+
+RUN curl -s http://getcomposer.org/installer | php && \
+  echo "export PATH=${PATH}:/var/www/vendor/bin" >> ~/.bashrc && \
+  mv composer.phar /usr/local/bin/composer
+#######################################################################################################################
+
+# Install dependincies ################################################################################################
+RUN apk add zsh
+RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
+#######################################################################################################################
+
+# Solve permissions problems ##########################################################################################
+RUN userdel www-data && rm -r /home/www-data
+RUN useradd -m www-data -u 1000
+RUN chown www-data:www-data /var/www
+USER www-data
+#######################################################################################################################
+
+# Create aliases ######################################################################################
+RUN echo 'alias art="php artisan"' >> ~/.zshrc
+RUN echo 'alias test="clear && php artisan test"' >> ~/.zshrc
+#######################################################################################################################
+
+EXPOSE 9000
