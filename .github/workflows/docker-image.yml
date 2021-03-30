@@ -22,7 +22,7 @@ jobs:
  #    - name: Build main Docker image
  #      run: docker build . --file docker/php/Dockerfile --tag ammardev0/php:${{steps.vars.outputs.tag}}
     - name: Build php 7.1
-      run: docker build . --file docker/php/Dockerfile73 --tag ammardev0/php:7.1
+      run: docker build . --file docker/php/Dockerfile71 --tag ammardev0/php:7.1
     - name: Push php7.1
       run: docker push ammardev0/php:7.1
     - name: Build php 7.3
