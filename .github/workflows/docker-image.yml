@@ -21,6 +21,10 @@ jobs:
       run: echo ::set-output name=tag::$(echo ${GITHUB_SHA:10})
  #    - name: Build main Docker image
  #      run: docker build . --file docker/php/Dockerfile --tag ammardev0/php:${{steps.vars.outputs.tag}}
+    - name: Build php 7.1
+      run: docker build . --file docker/php/Dockerfile73 --tag ammardev0/php:7.1
+    - name: Push php7.1
+      run: docker push ammardev0/php:7.1
     - name: Build php 7.3
       run: docker build . --file docker/php/Dockerfile73 --tag ammardev0/php:7.3
     - name: Push php7.3
