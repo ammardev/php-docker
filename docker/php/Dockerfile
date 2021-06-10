@@ -16,8 +16,6 @@ RUN docker-php-ext-enable xdebug memcached redis mongodb
 RUN curl -s http://getcomposer.org/installer | php && \
   echo "export PATH=${PATH}:/var/www/vendor/bin" >> ~/.bashrc && \
   mv composer.phar /usr/local/bin/composer
-
-RUN composer global require "laravel/envoy";
 #######################################################################################################################
 
 # Install dependincies ################################################################################################
@@ -31,6 +29,8 @@ RUN useradd -m www-data -u 1000
 RUN chown www-data:www-data /var/www
 USER www-data
 #######################################################################################################################
+
+RUN composer global require "laravel/envoy";
 
 # Create aliases ######################################################################################
 RUN echo 'alias art="php artisan"' >> ~/.zshrc
