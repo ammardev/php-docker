@@ -28,6 +28,8 @@ jobs:
     - name: Build php 7.3
       run: docker build . --file docker/php/Dockerfile73 --tag ammardev0/php:7.3
     - name: Push php7.3
+      run: docker push ammardev0/php:7.3
+    - name: Build php8.0
       run: docker build . --file docker/php/Dockerfile8 --tag ammardev0/php:8.0
     - name: Push php8.0
       run: docker push ammardev0/php:8.0
