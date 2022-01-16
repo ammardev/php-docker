@@ -8,9 +8,9 @@ RUN apk add shadow git curl libpng-dev zip unzip libzip-dev libpng libpng-dev jp
 
 RUN docker-php-ext-install pdo pdo_mysql mysqli gd zip exif opcache calendar pcntl bcmath sockets
 
-RUN pecl install memcached redis mongodb
+RUN pecl install memcached redis
 
-RUN docker-php-ext-enable memcached redis mongodb mysqli
+RUN docker-php-ext-enable memcached redis mysqli
 
 RUN curl -s http://getcomposer.org/installer | php && \
   echo "export PATH=${PATH}:/var/www/vendor/bin" >> ~/.bashrc && \
