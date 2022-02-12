@@ -18,7 +18,7 @@ jobs:
       run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
 
     - name: Build
-      run: docker build . --file docker/php/Dockerfile81 --tag ammardev0/php:8.1 --tag ammardev0/php:latest
+      run: docker build . --file Dockerfiles/Dockerfile81 --tag ammardev0/php:8.1 --tag ammardev0/php:latest
 
     - name: Push
       run: docker push ammardev0/php:8.1
