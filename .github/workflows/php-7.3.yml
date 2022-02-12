@@ -1,0 +1,22 @@
+name: Build, Push php 7.3 image
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Login to DockerHub
+      run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+
+    - name: Build
+      run: docker build . --file docker/php/Dockerfile73 --tag ammardev0/php:7.3
+
+    - name: Push
+      run: docker push ammardev0/php:7.3
