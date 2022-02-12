@@ -4,7 +4,7 @@ on:
   push:
     branches: [ master ]
     paths:
-      - docker/php/Dockerfile80
+      - Dockerfiles/Dockerfile80
 
 jobs:
 
