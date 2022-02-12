@@ -3,6 +3,8 @@ name: Build, Push php 8.1 image
 on:
   push:
     branches: [ master ]
+    paths:
+      - docker/php/Dockerfile81
 
 jobs:
 
