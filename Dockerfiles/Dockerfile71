@@ -36,4 +36,6 @@ RUN echo 'alias art="php artisan"' >> ~/.zshrc
 RUN echo 'alias test="clear && php artisan test"' >> ~/.zshrc
 #######################################################################################################################
 
+ENTRYPOINT ["/bin/zsh"]
+
 EXPOSE 9000
