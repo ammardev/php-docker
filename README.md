@@ -12,6 +12,14 @@ The image has Composer installed by default with many PHP extensions enabled.
 
 ## Usage
 
+By default, the container will create a webserver using PHP built-in web server feature.
+
+```bash
+docker run -v $PWD:/var/www -p 80:80 ammardev0/php
+```
+
+You can execute any other command. That will run your command inside the container without running the web server.
+
 ```bash
 docker run ammardev0/php php -v
 ```
