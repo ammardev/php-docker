@@ -4,14 +4,14 @@ RUN apk update
 
 # Install dependincies ################################################################################################
 RUN apk add shadow git curl libpng-dev zip unzip libzip-dev libpng libpng-dev jpeg-dev libjpeg-turbo-dev libwebp-dev\
-    libjpeg zlib-dev libxpm-dev freetype-dev libmemcached-dev php-pcntl openssh-client php-bcmath $PHPIZE_DEPS
+    libjpeg zlib-dev libxpm-dev freetype-dev libmemcached-dev php-pcntl openssh-client php-bcmath librdkafka-dev $PHPIZE_DEPS
 
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
 && docker-php-ext-install pdo pdo_mysql gd zip exif opcache calendar pcntl bcmath
 
-RUN pecl install xdebug memcached redis mongodb
+RUN pecl install xdebug memcached redis mongodb rdkafka
 
-RUN docker-php-ext-enable xdebug memcached redis mongodb
+RUN docker-php-ext-enable xdebug memcached redis mongodb rdkafka
 
 RUN curl -s http://getcomposer.org/installer | php && \
   echo "export PATH=${PATH}:/var/www/vendor/bin" >> ~/.bashrc && \
